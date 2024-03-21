@@ -19,6 +19,7 @@
 
 .socialList > li:hover {
     background-color: #ffbb33;
+    border-radius: 8px;
 }
 
 .socialList svg {
