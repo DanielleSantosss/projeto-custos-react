@@ -1,0 +1,89 @@
+.projectCard{
+    padding: 1em;
+    border: 1px solid #7a7a7a;
+    border-radius: 5px;
+    width: 24%;
+    margin: 0.5%;
+}
+
+.projectCard > h4 {
+    background-color: #222;
+    border-radius: 3px;
+    color: #ffbb33;
+    padding: 0.4em;
+    margin-bottom: 1.3em;
+    font-size: 1.3em;
+}
+
+.projectCard > p {
+    color: #7a7a7a;
+    margin-bottom: 1em;
+}
+
+.projectCard > span {
+    font-weight: bold;
+}
+
+.categoryText{
+    display: flex;
+    align-items: center;
+}
+
+.categoryText > span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #CCC;
+    margin-right: 5px;
+}
+
+.categoryText .infraestrutura {
+    background-color: #ee526c;
+  }
+  
+.categoryText .desenvolvimento {
+    background-color: #69ece8;
+  }
+  
+.categoryText .design {
+    background-color: #83eea3;
+  }
+  
+.categoryText .planejamento {
+    background-color: #ff9d00;
+  }
+  
+.projectCardActions {
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+  }
+  
+.projectCardActions > a, .projectCardActions > button {
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #222;
+    font-size: 0.9em;
+    padding: 0.6em 1em;
+    margin-right: 1em;
+    cursor: pointer;
+    border: 1px solid #222;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.541);
+  }
+  
+.projectCardActions svg {
+    margin-right: 0.5em;
+  }
+  
+.projectCardActions a:hover,
+.projectCardActions button:hover {
+    background-color: #222;
+    color: #ffbb33;
+  }
