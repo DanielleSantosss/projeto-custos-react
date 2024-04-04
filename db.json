@@ -8,8 +8,81 @@
         "id": "1",
         "name": "Design"
       },
-      "cost": 0,
-      "services": []
+      "cost": 1924,
+      "services": [
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "baf9e409-3347-474f-8d76-00a1691abe75"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "baf9e409-3347-474f-8d76-00a1691abe75"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "101",
+          "description": "auhdauh",
+          "id": "c2d7fd89-686f-4f56-8c02-45206d327e85"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "101",
+          "description": "auhdauh",
+          "id": "c2d7fd89-686f-4f56-8c02-45206d327e85"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "b993570e-8455-4ec3-8923-86dd1bcad1f3"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "736e7f05-d67b-49ad-aa6d-2423edb62151"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "e4704fc9-1754-4b46-9189-9fc1c6b999a5"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "822",
+          "description": "rgfgf",
+          "id": "1bd33228-1f66-4247-993d-d33689b4d439"
+        }
+      ]
     }
   ],
   "categories": [
