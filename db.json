@@ -8,7 +8,7 @@
         "id": "1",
         "name": "Design"
       },
-      "cost": 1924,
+      "cost": 2108,
       "services": [
         {
           "name": "meu querido serviço",
@@ -81,6 +81,36 @@
           "cost": "822",
           "description": "rgfgf",
           "id": "1bd33228-1f66-4247-993d-d33689b4d439"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "100",
+          "description": "auhdauh",
+          "id": "8c7f2924-1dc7-4459-b83c-4fc0ceb01333"
+        },
+        {
+          "name": "meu querido serviço",
+          "cost": "84",
+          "description": "auhdauh",
+          "id": "4695dd76-a688-4cbf-ac2a-df981c120454"
+        }
+      ]
+    },
+    {
+      "id": "bc88",
+      "name": "mais um querido projeto",
+      "budget": "10000",
+      "category": {
+        "id": "3",
+        "name": "Infraestrutura"
+      },
+      "cost": 1000,
+      "services": [
+        {
+          "name": "contratar um dev front-end",
+          "cost": "1000",
+          "description": "fazer a home",
+          "id": "dd83551a-9705-4ebc-9baf-a3dcf19c0bcc"
         }
       ]
     }
