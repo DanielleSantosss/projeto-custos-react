@@ -42,7 +42,7 @@ function Project() {
 
 
   function editPost(project) {
-    setMessage('')
+        setMessage('')
     // budget validation
     if (project.budget < project.cost) {
         setTimeout(() => {
@@ -64,12 +64,13 @@ function Project() {
       .then((data) => {
         setProject(data)
         setShowProjectForm(!showProjectForm)
-        setMessage('Projeto atualizado!')
+        setMessage('Projeto atualizado.')
         setType('success')
-      })
+      }).catch((error) => console.log(error));
   }
 
   function createService(project) {
+    setMessage('')
     // last service
     const lastService = project.services[project.services.length - 1]
 

@@ -68,13 +68,19 @@
       },
       "name": "mais um belo projeto",
       "budget": "7000",
-      "cost": 1000,
+      "cost": 7000,
       "services": [
         {
           "name": "hhhhhhhhhhhhh",
           "cost": "1000",
           "description": "kkkkkkkkkk",
           "id": "3c7fec0c-ebcc-4f6d-9fc3-47c215c76a6a"
+        },
+        {
+          "name": "Danielle Vitória dos Santos",
+          "cost": "6000",
+          "description": "ajiawdsk",
+          "id": "36cc1a40-a7a6-41f1-bdbf-5a05f3b3ebc9"
         }
       ]
     }
