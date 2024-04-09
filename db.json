@@ -1,102 +1,6 @@
 {
   "projects": [
     {
-      "id": "40f7",
-      "name": "mais um projeto bacana",
-      "budget": "5000",
-      "category": {
-        "id": "1",
-        "name": "Design"
-      },
-      "cost": 2108,
-      "services": [
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "9034bb9d-5f21-4db7-b556-44e5c6ec1b91"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "baf9e409-3347-474f-8d76-00a1691abe75"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "baf9e409-3347-474f-8d76-00a1691abe75"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "101",
-          "description": "auhdauh",
-          "id": "c2d7fd89-686f-4f56-8c02-45206d327e85"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "101",
-          "description": "auhdauh",
-          "id": "c2d7fd89-686f-4f56-8c02-45206d327e85"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "b993570e-8455-4ec3-8923-86dd1bcad1f3"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "736e7f05-d67b-49ad-aa6d-2423edb62151"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "e4704fc9-1754-4b46-9189-9fc1c6b999a5"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "822",
-          "description": "rgfgf",
-          "id": "1bd33228-1f66-4247-993d-d33689b4d439"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "100",
-          "description": "auhdauh",
-          "id": "8c7f2924-1dc7-4459-b83c-4fc0ceb01333"
-        },
-        {
-          "name": "meu querido serviço",
-          "cost": "84",
-          "description": "auhdauh",
-          "id": "4695dd76-a688-4cbf-ac2a-df981c120454"
-        }
-      ]
-    },
-    {
       "id": "bc88",
       "name": "mais um querido projeto",
       "budget": "10000",
@@ -104,13 +8,73 @@
         "id": "3",
         "name": "Infraestrutura"
       },
-      "cost": 1000,
+      "cost": 2000,
       "services": [
         {
           "name": "contratar um dev front-end",
           "cost": "1000",
           "description": "fazer a home",
           "id": "dd83551a-9705-4ebc-9baf-a3dcf19c0bcc"
+        },
+        {
+          "name": "bzfcb\\fhdf",
+          "cost": "1000",
+          "description": "zhfgthz",
+          "id": "12a8b8fc-0681-4c63-9bbe-8f7fc681a85c"
+        }
+      ]
+    },
+    {
+      "id": "170f",
+      "name": "meu querido projeto amado",
+      "budget": "5000",
+      "category": {
+        "id": "1",
+        "name": "Design"
+      },
+      "cost": 800,
+      "services": [
+        {
+          "name": "xjbmb mmx",
+          "cost": "800",
+          "description": "tfhgchtz",
+          "id": "d806f692-4b1f-4f0a-a427-6151cf14a568"
+        }
+      ]
+    },
+    {
+      "id": "5193",
+      "name": "meu projeto bacana",
+      "budget": "8000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 2000,
+      "services": [
+        {
+          "name": "ngfzzhvcxf",
+          "cost": "2000",
+          "description": "sr6yrthb",
+          "id": "babb4fbc-9077-40ef-895c-ed7d75e2c5f2"
+        }
+      ]
+    },
+    {
+      "id": "eae9",
+      "category": {
+        "id": "4",
+        "name": "Planejamento"
+      },
+      "name": "mais um belo projeto",
+      "budget": "7000",
+      "cost": 1000,
+      "services": [
+        {
+          "name": "hhhhhhhhhhhhh",
+          "cost": "1000",
+          "description": "kkkkkkkkkk",
+          "id": "3c7fec0c-ebcc-4f6d-9fc3-47c215c76a6a"
         }
       ]
     }

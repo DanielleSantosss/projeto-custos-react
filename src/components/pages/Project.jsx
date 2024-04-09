@@ -1,209 +1,217 @@
-import React from  'react';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from "react";
 import { parse, v4 as uuidv4 } from 'uuid'
+
+import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
+import styles from './Project.module.css'
 
 import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import ProjectForm from '../projects/ProjectForm'
 import Message from '../layout/Message'
-import ServiceForm from '../service/ServiceForm';
+import ServiceForm from '../service/ServiceForm'
 import ServiceCard from '../service/ServiceCard'
 
-import styles from './Project.module.css'
-
-
 function Project() {
-    
-    const {id} = useParams()
+  let { id } = useParams()
+  const [project, setProject] = useState([])
+  const [showProjectForm, setShowProjectForm] = useState(false)
+  const [showServiceForm, setShowServiceForm] = useState(false)
+  const [services, setServices] = useState([])
+  const [message, setMessage] = useState('')
+  const [type, setType] = useState('success')
 
-    const [project, setProject] = useState([])
-
-    const [services, setServices] = useState([])
-
-    const [showProjectForm, setProjectForm] = useState(false)
-
-    const [showServiceForm, setServiceForm] = useState(false)
-
-    const [message, setMessage] = useState('')
-
-    const [type, setType] = useState('')
-
-    
-
-    useEffect(() => {
-        setTimeout(() => {
-            fetch(`http://localhost:5000/projects/${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                setProject(data);
-                setServices(data.services)
-            })
-            .catch(err => {
-                console.error('Error fetching project:', err);
-            });
-        }, 300)
+  useEffect(() => {
+    setTimeout(() => {
+        fetch(`http://localhost:5000/projects/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            setProject(data);
+            setServices(data.services)
+        })
+        .catch(err => {
+            console.error('Error fetching project:', err);
+        });
+    }, 300)
     }, [id])
 
-    function editPost(project) {
-        setMessage('')
-        // budget validation
-        if (project.budget < project.cost) {
-            setTimeout(() => {
-                setMessage('O orçamento não pode ser menor que o custo do projeto.')
-                setType('error')
-            },1)
 
-            return true
-        }
+  function editPost(project) {
+    setMessage('')
+    // budget validation
+    if (project.budget < project.cost) {
+        setTimeout(() => {
+            setMessage('O orçamento não pode ser menor que o custo do projeto.')
+            setType('error')
+        },1)
 
-        fetch(`http://localhost:5000/projects/${project.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(project),
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setProject(data);
-            setProjectForm(false);
-            setMessage('Projeto atualizado.')
-            setType('success')
-        })
-        .catch((error) => console.log(error));
-    }
-        
-    function toggleProjectForm() {
-        setProjectForm(!showProjectForm);
+        return true
     }
 
-    function toggleServiceForm() {
-        setServiceForm(!showServiceForm);
+    fetch(`http://localhost:5000/projects/${project.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(project),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProject(data)
+        setShowProjectForm(!showProjectForm)
+        setMessage('Projeto atualizado!')
+        setType('success')
+      })
+  }
+
+  function createService(project) {
+    // last service
+    const lastService = project.services[project.services.length - 1]
+
+    lastService.id = uuidv4()
+
+    const lastServiceCost = lastService.cost
+
+    const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
+    // maximum value validation
+    if (newCost > parseFloat(project.budget)) {
+        setTimeout(() => {
+            setMessage('Orçamento ultrapassado, verifique o valor do serviço.');
+            setType("error");
+        },1)          
+        project.services.pop();
+        return false;
     }
 
-    function removeService(){
+    // add service cost to project cost total
+    project.cost = newCost
 
-    }
+    
+    fetch(`http://localhost:5000/projects/${project.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(project),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setServices(data.services)
+        setShowServiceForm(!showServiceForm)
+        setMessage('Serviço adicionado!')
+        setType('success')
+      })
+  }
 
-    function createService(project){
-        setMessage('')
+  function removeService(id, cost) {
+    const servicesUpdated = project.services.filter(
+      (service) => service.id !== id,
+    )
 
-        //last service
-        const lastService = project.services[project.services.length - 1]
+    const projectUpdated = project
 
-        lastService.id = uuidv4()
+    projectUpdated.services = servicesUpdated
+    projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
 
-        const lastServiceCost = lastService.cost
+    fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(projectUpdated),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setProject(projectUpdated)
+        setServices(servicesUpdated)
+        setMessage('Serviço removido com sucesso!')
+      })
+  }
 
-        const newCost = parseFloat(project.cost)  + parseFloat(lastServiceCost)
+  function toggleProjectForm() {
+    setShowProjectForm(!showProjectForm)
+  }
 
-        //maximum value validation
-        if (newCost > parseFloat(project.budget)) {
-            setTimeout(() => {
-                setMessage('Orçamento ultrapassado, verifique o valor do serviço.');
-                setType("error");
-            },1)          
-            project.services.pop();
-            return false;
-        }
+  function toggleServiceForm() {
+    setShowServiceForm(!showServiceForm)
+  }
 
-        //add service cost to project total cost
-        project.cost = newCost
-
-        //update project
-        fetch(`http://localhost:5000/projects/${project.id}`, {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(project)
-        }).then((resp) => resp.json())
-        .then((data) => {
-            setProject(data);
-            setServiceForm(false)
-            setMessage('Serviço adicionado com sucesso.');
-            setType('success');
-        })
-        .catch(error => console.log(error));
-
-
-    }
-
-    return(
-        <>
-            {project.name ? (
-                <div className={styles.projectDetails}>
-                    <Container customClass="column">
-                        {!!message && <Message type={type} msg={message}/>}
-                        <div className={styles.detailsContainer}>
-                            <h1>Projeto: {project.name}</h1>
-                            
-                            <button className={styles.button} onClick={toggleProjectForm}>
-                                {!showProjectForm ? 'Editar Projeto' : 'Fechar'}
-                            </button>
-                        </div>
-                        {!showProjectForm ? (
-                            <div className={styles.form}>
-                                <p>
-                                    <span>Categoria:</span> {project.category.name}
-                                </p>
-                                <p>
-                                    <span>Total de Orçamento:</span> R${project.budget}
-                                </p>
-                                <p>
-                                    <span>Total Utilizado:</span> R${project.cost}
-                                </p>
-                            </div>
-                        ) : (
-                            <div className={styles.form}> 
-                                <ProjectForm handleSubmit={editPost} btnText="Concluir edição" projectData={project}/>
-                            </div>
-                        )}
-                            <div className={styles.serviceFormContainer}>
-                                <h2>Adicione um serviço:</h2>
-                                <button className={styles.button} onClick={toggleServiceForm}>
-                                {!showServiceForm ? 'Adicionar Projeto' : 'Fechar'}
-                                </button>
-                            </div>
-                            <div className={styles.form}>
-                                {showServiceForm && (
-                                    <ServiceForm 
-                                      handleSubmit={createService}      
-                                      btnTxt='Adicionar serviço'
-                                      projectData={project}
-                                    />
-                                )}
-                            </div>
-                            <h2>Serviços</h2>
-                            <Container customClass="start">
-                                {services.length > 0 &&
-                                
-                                    services.map((service) => (
-                                        <ServiceCard
-                                            id={service.id}
-                                            name={service.name}
-                                            cost={service.cost}
-                                            description={service.description}
-                                            key={service.id}
-                                            handleRemove={removeService}
-                                        />
-                                    ))
-
-                                }
-
-                                {services.length === 0 && <p>Não há serviços cadastrados.</p>}
-                            </Container>
-                    </Container>
+  return (
+    <>
+      {project.name ? (
+        <div className={styles.projectDetails}>
+          <Container customClass="column">
+            {message && <Message type={type} msg={message} />}
+            <div className={styles.detailsContainer}>
+              <h1>Projeto: {project.name}</h1>
+              <button className={styles.button} onClick={toggleProjectForm}>
+                {!showProjectForm ? 'Editar projeto' : 'Fechar'}
+              </button>
+              {!showProjectForm ? (
+                <div className={styles.form}>
+                  <p>
+                    <span>Categoria:</span> {project.category.name}
+                  </p>
+                  <p>
+                    <span>Total do orçamento:</span> R${project.budget}
+                  </p>
+                  <p>
+                    <span>Total utilizado:</span> R${project.cost}
+                  </p>
                 </div>
-            ) : ( 
-                <Loading/>
-            )}       
-        </>
-    );
+              ) : (
+                <div className={styles.form}>
+                  <ProjectForm
+                    handleSubmit={editPost}
+                    btnText="Concluir Edição"
+                    projectData={project}
+                  />
+                </div>
+              )}
+            </div>
+            <div className={styles.serviceFormContainer}>
+              <h2>Adicione um serviço:</h2>
+              <button className={styles.button} onClick={toggleServiceForm}>
+                {!showServiceForm ? 'Adicionar Serviço' : 'Fechar'}
+              </button>
+              <div className={styles.form}>
+                {showServiceForm && (
+                  <ServiceForm
+                    handleSubmit={createService}
+                    btnTxt="Adicionar Serviço"
+                    projectData={project}
+                  />
+                )}
+              </div>
+            </div>
+            <h2>Serviços:</h2>
+            <Container customClass="start">
+              {services.length > 0 &&
+                services.map((service) => (
+                  <ServiceCard
+                    id={service.id}
+                    name={service.name}
+                    cost={service.cost}
+                    description={service.description}
+                    key={service.id}
+                    handleRemove={removeService}
+                  />
+                ))}
+              {services.length === 0 && <p>Não há serviços cadastrados.</p>}
+            </Container>
+          </Container>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </>
+  )
 }
 
-export default Project;
+export default Project
