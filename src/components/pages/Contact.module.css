@@ -1,0 +1,42 @@
+.details{
+    padding: 2em;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.details h1,
+.details p {
+    margin-bottom: 0.5em;
+}
+
+.details h1 {
+    background-color: #222;
+    border-radius: 4px;
+    color: #ffbb33;
+    padding: 0.6em;
+    width: 100%;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.192);
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.details p {
+    font-size: 18px;
+    border: 1px solid #222;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.089);
+}
+
+.details footer p {
+    border: none;
+    box-shadow: none;
+}
+
+.details span {
+    font-weight: bolder;
+    border: none;
+    
+}
+
